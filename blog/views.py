@@ -19,15 +19,28 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_detail.html', {'post': post, 'posts': posts})
+
+def about(request,):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/about.html', {'post': post})
 
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST,request.FILES)
         if form.is_valid():
+
             post = form.save(commit=False)
-            post.docfile = request.FILES['docfile']
             post.author = request.user
+            #post.docfile = request.FILES.get('Title_image', None)
+            #post.h1image = request.FILES.get('First_paragraph_image', None)
+            #post.subtitle = request.Post.get('subtile', None)
+            #post.intro = request.Post.get('intro', None)
+            #post.h1 = request.Post.get('h1', None)
+            #post.h1date = request.Post.get('h1date', None)
+            #post.h1text = request.Post.get('h1text', None)
+
             post.published_date = timezone.now()
             post.save()
             return redirect('post_detail', pk=post.pk)

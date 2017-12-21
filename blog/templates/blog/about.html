@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% if post %}
+    <p class="blog-post-meta">
+
+        {{ post.published_date.year}}
+        -
+        {{post.published_date.month}}
+        -
+        {{post.published_date.day}}
+        by
+        {{ post.author}}
+    </p>
+{% else %}
+        {{ request.user}}
+{% endif %}
+{% endblock %}

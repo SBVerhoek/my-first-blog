@@ -1,36 +1,28 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.text }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
-    {% if documents %}
-            <ul>
-            {% for document in documents %}
-                    <li><a href="{{ document.docfile.url }}">{{ document.docfile.url }}
-                    <img src="{{ document.docfile.url }}" alt="{{ document.docfile.name }}">
-                    </a></li>
-            {% endfor %}
-            </ul>
-    {% else %}
-            <p>No documents.</p>
-    {% endif %}
+<h1 class = "blog-title">Check out These blogs:</h2>
+{% for post in posts %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <div class="blog-post">
+        <div class="commentreplies">
+        <p class="blog-post-title title" id="listings"><a  href="{% url 'post_detail' pk=post.pk %}">{{ post.Title }}</a></p>
+        {% if post.Subtitle %}
+                <p class="blog-post-meta title" id="listings">{{ post.Subtitle|linebreaksbr }}</p>
+        {% endif %}
+        {% if post.Title_image %}
+                <img src="{{ post.Title_image.url }}" alt="{{ post.Title_image.name }}" class="img-responsive mainimage">
+        {% endif %}
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
-    <!-- Upload form. Note enctype attribute! -->
-    <form action="{% url "document_list" %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>{{ form.non_field_errors }}</p>
-            <p>{{ form.docfile.label_tag }} </p>
-            <p>
-                    {{ form.docfile.errors }}
-                    {{ form.docfile }}
-            </p>
-            <p><input type="submit" value="Upload" /></p>
-    </form>
+  {% endfor %}
+
+
+  <!-- Upload form. Note enctype attribute! -->
 {% endblock %}

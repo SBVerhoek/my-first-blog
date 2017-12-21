@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -37,57 +37,20 @@
               <div class="blog-masthead">
                 <div class="container">
                   <nav class="nav blog-nav">
-                    <a class="nav-link active" href="index.html">Home</a>
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link active" href="{% url 'home'%}" >Home</a>
+
+                    <a class="nav-link top-menu" href="{% url 'post_new' %}">New</a>
                   </nav>
                 </div>
 
-        </div>
-
-        <div class="blog-header">
-          <div class="container">
-            <h1 class="blog-title title">The beaches of Bali</h1>
-            <p class="lead blog-description title">An overview of my journey to Bali</p>
-            <img src="bali-secret-beach.jpg" alt="secret beach" class="img-responsive mainimage">
-          </div>
-        </div>
-
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                  <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+             </div>
                     {% block content %}
                     {% endblock %}
-                </div>
-            </div>
-        </div>
-        <div id="main">
-          Comments:
-        </div>
-        <div id="main">
-          Comments:
-        </div>
-
-        <div class="form-group">
-            <label for="comment">New comment:</label>
-          <div class="form-textarea">
-          <textarea class="form-control" rows="5" id="comment">
 
 
-          </textarea>
-          <button type="button" class="btn btn-primary" id = "testcase" onclick="makeComment();">Submit</button>
-        </div>
-
-
-
-
-        </div>
-        <script>
-        document.getElementById('comment').value = "";
-        </script>
 
         <!-- List of uploaded documents -->
-         <div class="subtitle_2nd" id="Template">Template: mysite/blog/templates/blog/document_list.html</div>
+
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

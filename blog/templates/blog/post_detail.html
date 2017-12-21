@@ -1,15 +1,153 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
+<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a
+    <div class="blog-header">
+      <div class="container">
+        {% if post.Title %}
+            <div class="blog-title title">
+                {{ post.Title }}
             </div>
         {% endif %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h1>{{ post.text }}</h1>
-        <img src="{{ post.docfile.url }}" alt="{{ post.docfile.name }}">
-        <p>{{ post.text|linebreaksbr }}</p>
+        {% if post.Subtitle %}
+            <div class="lead blog-description title">
+                {{ post.Subtitle }}
+            </div>
+        {% endif %}
+        {% if post.Title_image %}
+
+                <img src="{{ post.Title_image.url }}" alt="{{ post.Title_image.name }}" class="img-responsive mainimage">
+
+        {% endif %}
+      </div>
     </div>
+<hr>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post left">
+            <h2 class="blog-post-title">
+              Introduction
+          </h2>
+
+
+            {% if post.Title %}
+                <p class="blog-post-meta">
+
+                    {{ post.published_date.year}}
+                    -
+                    {{post.published_date.month}}
+                    -
+                    {{post.published_date.day}}
+                    by
+                    {{ post.author}}
+                </p>
+            {% endif %}
+
+            {% if post.Introduction_text %}
+                <p>
+                    {{ post.Introduction_text }}
+                </p>
+            {% endif %}
+
+            {% if post.First_paragraph_title %}
+                  <h2 class="blog-post-title">
+                    {{ post.First_paragraph_title }}
+                </h2>
+            {% endif %}
+
+            {% if post.First_paragraph_date %}
+                  <p class="blog-post-meta">
+                    {{ post.First_paragraph_date }}
+                </p>
+            {% endif %}
+
+
+            {% if post.First_paragraph_text %}
+                <p>
+                    {{ post.First_paragraph_text }}
+                </p>
+            {% endif %}
+
+            {% if post.First_paragraph_image %}
+            <img src="{{ post.First_paragraph_image.url }}" alt="{{ post.First_paragraph_image.name }}" class="img-responsive otherimage">
+              {% endif %}
+
+              {% if post.Second_paragraph_title %}
+                    <h2 class="blog-post-title">
+                      {{ post.Second_paragraph_title }}
+                  </h2>
+              {% endif %}
+
+              {% if post.Second_paragraph_date %}
+                    <p class="blog-post-meta">
+                      {{ post.Second_paragraph_date }}
+                  </p>
+              {% endif %}
+
+
+              {% if post.Second_paragraph_text %}
+                  <p>
+                      {{ post.Second_paragraph_text }}
+                  </p>
+              {% endif %}
+
+              {% if post.Second_paragraph_image %}
+              <img src="{{ post.Second_paragraph_image.url }}" alt="{{ post.Second_paragraph_image.name }}" class="img-responsive otherimage">
+                {% endif %}
+
+
+
+
+          </div><!-- /.blog-post -->
+
+          <div id="main">
+            Comments:
+          </div>
+
+          <div class="form-group">
+              <label for="comment">New comment:</label>
+            <div class="form-textarea">
+            <textarea class="form-control" rows="5" id="comment">
+            </textarea>
+            <button type="button" class="btn btn-primary" id = "testcase" onclick="makeComment();">Submit</button>
+          </div>
+          </div>
+          <script>
+          document.getElementById('comment').value = "";
+          </script>
+
+        </div><!-- /.blog-main -->
+
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Follow me</h4>
+            <ol class="list-unstyled">
+              <li><a target="_blank" href="https://twitter.com/realdonaldtrump">Twitter</a></li>
+              <li><a target="_blank" href="">Facebook</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Related</h4>
+            <ol class="list-unstyled">
+              {% for postl in posts %}
+              {% if postl.Title == post.Title %}
+
+              {% else %}
+              <a  href="{% url 'post_detail' pk=post.pk %}">{{ postl.Title|linebreaks}}</a>
+              {% endif %}
+
+                {% endfor %}
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
 {% endblock %}

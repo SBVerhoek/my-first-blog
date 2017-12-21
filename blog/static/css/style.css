@@ -40,3 +40,16 @@
 .title{  /* center the main title of the blog*/
    text-align: center;
 }
+.left{  /* center the main title of the blog*/
+   text-align: left;
+}
+.listing{
+   color: blue;
+
+   text-align: center;
+}
+#listing{
+  color: blue;
+
+  text-align: center;
+}

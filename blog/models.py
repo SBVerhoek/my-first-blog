@@ -1,16 +1,29 @@
 from django.db import models
 from django.utils import timezone
-
+import datetime
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
-    title = models.CharField(max_length=200, default='Blog title')
-    text = models.TextField()
+    Title = models.CharField(max_length=200)
+    Subtitle = models.CharField(max_length=300, null=True, blank=True)
+    Title_image = models.FileField(upload_to='documents/%Y/%m/%d', default=None, blank=True)
+    Introduction_text =  models.TextField(null=True, blank=True)
+    First_paragraph_title= models.CharField(max_length=200, null=True, blank=True)
+    First_paragraph_date = models.DateField(default=datetime.date.today,blank=True)
+    First_paragraph_text =  models.TextField(null=True, blank=True)
+    First_paragraph_image = models.FileField(upload_to='documents/%Y/%m/%d', default=None, blank=True, null=True)
+    Second_paragraph_title= models.CharField(max_length=200, null=True, blank=True)
+    Second_paragraph_date = models.DateField(default=datetime.date.today,blank=True)
+    Second_paragraph_text =  models.TextField(null=True, blank=True)
+    Second_paragraph_image = models.FileField(upload_to='documents/%Y/%m/%d', default=None, blank=True, null=True)
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-    docfile = models.FileField(upload_to='documents/%Y/%m/%d', default='MEDIA_ROOT/bali-secret-beach.jpg')
+
+
+
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()
