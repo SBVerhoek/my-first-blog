@@ -1,0 +1,103 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script src="{% static 'javascript/javafile.js' %}"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="http://2id60.win.tue.nl/~s155185/favicon.ico">
+
+        <title>Travel Blog</title>
+
+        <!-- Bootstrap core CSS -->
+
+        <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="http://v4-alpha.getbootstrap.com/examples/blog/blog.css" rel="stylesheet">
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+              <div class="blog-masthead">
+                <div class="container">
+                  <nav class="nav blog-nav">
+                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link" href="about.html">About</a>
+                  </nav>
+                </div>
+
+        </div>
+
+        <div class="blog-header">
+          <div class="container">
+            <h1 class="blog-title title">The beaches of Bali</h1>
+            <p class="lead blog-description title">An overview of my journey to Bali</p>
+            <img src="bali-secret-beach.jpg" alt="secret beach" class="img-responsive mainimage">
+          </div>
+        </div>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                  <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <div id="main">
+          Comments:
+        </div>
+        <div id="main">
+          Comments:
+        </div>
+
+        <div class="form-group">
+            <label for="comment">New comment:</label>
+          <div class="form-textarea">
+          <textarea class="form-control" rows="5" id="comment">
+
+
+          </textarea>
+          <button type="button" class="btn btn-primary" id = "testcase" onclick="makeComment();">Submit</button>
+        </div>
+
+
+
+
+        </div>
+        <script>
+        document.getElementById('comment').value = "";
+        </script>
+
+        <!-- List of uploaded documents -->
+         <div class="subtitle_2nd" id="Template">Template: mysite/blog/templates/blog/document_list.html</div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+        <!--<script>window.jQuery || document.write('<script src="http://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"></script>')</script>-->
+        <script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    </body>
+</html>

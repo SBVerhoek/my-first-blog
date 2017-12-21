@@ -1,0 +1,42 @@
+.commentreplies { /* set the looks for comments */
+    color:blue;
+    word-wrap: break-word; /* make sure comments go to the next page if they are long */
+
+    border: 1px solid grey;
+    padding: 5px;
+    margin: 5px 0px 5px 0px;
+    border-radius: 5px;
+    /* make a border around the comment */
+}
+.shadow{
+    box-shadow: 1px 1px 5px #888888; /* add shadow to a class when it is hovered */
+}
+.inner{
+  margin: 5px 0px 5px 20px; /* make replies and reply text box start a bit to the right */
+}
+#replydelete{ /* set the button for deleting the reply textbox to be not so outstanding */
+  background: transparent;
+  border: none !important;
+  font-size:12;
+  color: grey;
+}
+.replyclass{
+}
+
+#textid{
+  position:relative;
+  color:#484848;
+}
+.mainimage { /* display the main image of the blog in the right position */
+    width: 75%;
+    display: block; /* center the image */
+     margin: 0 auto;
+}
+.otherimage { /* set other images throughout the blog on the rigth position*/
+    width: 100%;
+    display: block;
+     margin: 0 auto;
+}
+.title{  /* center the main title of the blog*/
+   text-align: center;
+}
