@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '73j0-^w94ez&ihee#ik@fu*qo3jg$8(3gh&abvs#ti)zy%w_dd'
+SECRET_KEY = ')uf6nk#o2w5j7t+@2kl$&cydqawi)=!57&9j!#1i-#agmqc+)7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'sannespock.pythonanywhere.com']
 
 
 # Application definition
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+    'website',
+    'rest_framework', #toegevoegd voor api
+    #'snippets.apps.SnippetsConfig', #toegevoegd voor api
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_currentuser.middleware.ThreadLocalUserMiddleware', #ADDED
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -117,9 +120,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-ALLOWED_HOSTS = ['127.0.0.1', 's155185.pythonanywhere.com']
-#STATICFILES_DIRS = ( os.path.join('static'), )
+
+# From here added by Lars----------------------------------------------------------------
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'index'
+
+# Till here added by Lars----------------------------------------------------------------
